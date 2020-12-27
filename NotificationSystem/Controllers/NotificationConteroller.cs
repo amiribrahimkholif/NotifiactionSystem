@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace NotificationSystem.Controllers
 {
@@ -16,12 +15,12 @@ namespace NotificationSystem.Controllers
         private AppDbContext _context;
         public NotificationConteroller(AppDbContext context)
         {
-
+            _context = context;
             _context = context;
             if (!_context.Notifications.Any())
             {
                 _context.Notifications.Add(new Notification
-                { Id = 1, Content = "Confirm  Your Email" ,Type="confirmation Email"});
+                { Id = 1, Content = "Confirm  Your Email", Type = "confirmation Email" });
                 _context.Notifications.Add(new Notification
                 { Id = 2, Content = "forget  Your Email Password", Type = "Forgetten email" });
                 _context.Notifications.Add(new Notification
@@ -29,8 +28,6 @@ namespace NotificationSystem.Controllers
                 _context.SaveChanges();
             }
         }
-
-
         // GET: api/<ValuesController>
         [HttpGet]
         public IEnumerable<Notification> GetNotifications()
@@ -47,7 +44,7 @@ namespace NotificationSystem.Controllers
                 return NotFound();
 
             return notification;
-            _context.SaveChanges();
+            //_context1.SaveChanges();
         }
 
         // POST api/<ValuesController>

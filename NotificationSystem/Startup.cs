@@ -30,12 +30,10 @@ namespace NotificationSystem
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddDbContext<AppDbContext>(context => { context.UseInMemoryDatabase("NotificationSystem"); });
+            //services.AddDbContext<AppDbContext>(optionns => {optionns.UseInMemoryDatabase("NotificationSystem"); });
+            services.AddDbContext<AppDbContext>(optionns => 
+                optionns.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "NotificationSystem", Version = "v1" });
-            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,9 +41,7 @@ namespace NotificationSystem
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "NotificationSystem v1"));
+               
             }
 
             app.UseHttpsRedirection();
