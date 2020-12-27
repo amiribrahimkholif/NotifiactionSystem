@@ -9,6 +9,7 @@ namespace NotificationSystem
         public String Content { get; set; }
 
         public String Type { get; set; }
-
+       
+     
     }
 }

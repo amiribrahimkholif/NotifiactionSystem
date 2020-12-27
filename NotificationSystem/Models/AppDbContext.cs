@@ -13,9 +13,10 @@ namespace NotificationSystem.Models
         {
 
         }
-
+        
         public DbSet<Notification> Notifications { set;  get; }
-
+        public DbSet<EmailQueue> EmailQueue { set; get; }
+        public DbSet<SMSQueue> SmsQueue { set; get; }
 
     }
 }
