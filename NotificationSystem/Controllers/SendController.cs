@@ -44,12 +44,12 @@ namespace NotificationSystem.Controllers
         }
         // POST api/<Controller>
         [HttpPost]
-        public IActionResult SendViaSMS([FromBody] int NotificationID,String number, String personName)
+        public IActionResult SendViaSMS(String personName, int NotificationId, [FromBody] SMSQueue sm)
         {
             SMSQueue s = new SMSQueue
             {
-                PhoneNumber=number,
-                NotificationContent = "Dear," + personName + _context1.Notifications.Find(NotificationID).Content,
+                PhoneNumber=sm.PhoneNumber,
+                NotificationContent = "Dear," + personName + _context1.Notifications.Find(NotificationId).Content,
             };
             _context1.SmsQueue.Add(s);
             _context1.SaveChanges();
