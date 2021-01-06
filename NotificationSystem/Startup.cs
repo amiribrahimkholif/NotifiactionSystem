@@ -34,6 +34,7 @@ namespace NotificationSystem
             services.AddDbContext<AppDbContext>(optionns => 
                 optionns.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,7 +54,7 @@ namespace NotificationSystem
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-            });
+            });  
         }
     }
 }

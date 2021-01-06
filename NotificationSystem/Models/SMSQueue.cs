@@ -8,7 +8,7 @@ namespace NotificationSystem.Models
     public class SMSQueue
     {
         public int Id { get; set; }
-        public String phoneNumber { get; set; }
+        public String PhoneNumber { get; set; }
         public String NotificationContent { get; set; }
 
     }
