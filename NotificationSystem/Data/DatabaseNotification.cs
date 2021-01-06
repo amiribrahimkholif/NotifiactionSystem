@@ -12,9 +12,9 @@ namespace NotificationSystem.Data
     {
         private AppDbContext _context;
 
-        public DatabaseNotification(AppDbContext context)
+        public DatabaseNotification()
         {
-            _context = context;
+            _context = new AppDbContext();
         }
 
         public bool AddNotification([FromBody] Notification notification)
