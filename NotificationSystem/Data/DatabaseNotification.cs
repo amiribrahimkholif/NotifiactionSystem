@@ -12,9 +12,9 @@ namespace NotificationSystem.Data
     {
         private AppDbContext _context;
 
-        public DatabaseNotification()
+        public DatabaseNotification(AppDbContext context)
         {
-            _context = new AppDbContext();
+            _context = context;
         }
 
         public bool AddNotification([FromBody] Notification notification)
@@ -22,7 +22,6 @@ namespace NotificationSystem.Data
             if (notification == null)
                 return false;
 
-             notification.Id = _context.Notifications.Count();
             _context.Notifications.Add(notification);
             _context.SaveChanges();
             return true;

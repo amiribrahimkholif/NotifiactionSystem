@@ -14,22 +14,22 @@ namespace NotificationSystem.Controllers
     public class SendController : ControllerBase
     {
         private ISendRepository _SendRepository;
-        public SendController()
+        public SendController(AppDbContext con)
         {
-            _SendRepository = new SendRepo();
+            _SendRepository = new SendRepo(con);
             
         }
         // POST api/<Controller>
         [HttpPost]
-        public bool SendViaEmail(String Name,  int NotificationId,  String email ) 
+        public bool SendViaEmail(String Name,  int NotificationId,  String email,String y ="") 
         {
-           return _SendRepository.SendViaEmail(Name,NotificationId,email);
+           return _SendRepository.SendViaEmail(Name,NotificationId,email,y);
         }
         // POST api/<Controller>
         [HttpPost]
-        public bool SendViaSMS(int NotificationId, string phone, string Name)
+        public bool SendViaSMS(int NotificationId, string phone, string Name, String y="")
         {
-            return _SendRepository.SendViaSMS(NotificationId, phone, Name);
+            return _SendRepository.SendViaSMS(NotificationId, phone, Name,y);
         }
 
     }

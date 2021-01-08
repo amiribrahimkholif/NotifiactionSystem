@@ -56,7 +56,8 @@ namespace NotificationSystem
             {
                 endpoints.MapControllers();
                
-            });  
+            });
+            app.UseDeveloperExceptionPage();
         }
     }
 }

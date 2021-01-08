@@ -11,12 +11,12 @@ namespace NotificationSystem.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class NotificationConteroller : ControllerBase
+    public class NotificationController : ControllerBase
     {
         private INotificationRepository _NotificationRepository;
-        public NotificationConteroller()
+        public NotificationController(AppDbContext context)
         {
-           _NotificationRepository =new  DatabaseNotification ();
+           _NotificationRepository =new  DatabaseNotification (context);
             
         }
         // GET: api/<ValuesController>
