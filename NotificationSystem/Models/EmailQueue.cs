@@ -10,6 +10,7 @@ namespace NotificationSystem.Models
         public  int Id { get; set; }
         public String EmailAddress { get; set; }
         public String NotificationContent { get; set; }
+        public bool isSent { get; set; }
 
     }
 

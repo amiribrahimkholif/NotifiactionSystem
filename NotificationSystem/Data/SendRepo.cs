@@ -9,12 +9,16 @@ namespace NotificationSystem.Data
     public class SendRepo : ISendRepository
     {
         private AppDbContext _context1;
+        private INotificationGateway sent;
         public SendRepo (AppDbContext context)
         {
             _context1 = context;
+    
         }
+
         public bool SendViaEmail(string Name, int NotificationId, string Email,String y ="")
         {
+            sent = new SendNotification();
             String temp;
             if (_context1.Notifications.Find(NotificationId) == null)
                 return false;
@@ -23,11 +27,12 @@ namespace NotificationSystem.Data
                 temp = _context1.Notifications.Find(NotificationId).Content;
                 temp = SendRepo.ReplacePlaceholders(temp, Name,y);
             }
-           
+
             EmailQueue e = new EmailQueue
             {
                 EmailAddress = Email,
                 NotificationContent = temp,
+                isSent = sent.Send(NotificationId),
             };
             _context1.EmailQueue.Add(e);
             _context1.SaveChanges();
@@ -36,6 +41,7 @@ namespace NotificationSystem.Data
         }
         public bool SendViaSMS(int NotificationId, string phone, string Name,String y)
         {
+            sent = new SendNotification();
             String temp;
             if (_context1.Notifications.Find(NotificationId) == null)
                 return false;
@@ -48,6 +54,7 @@ namespace NotificationSystem.Data
             {
                 PhoneNumber = phone,
                 NotificationContent =temp,
+                isSent = sent.Send(NotificationId),
             };
             _context1.SmsQueue.Add(s);
             _context1.SaveChanges();
@@ -58,8 +65,7 @@ namespace NotificationSystem.Data
         public static String ReplacePlaceholders(String content, String name,String y="")
         { 
                 String temp = content.Replace("{x}", name);
-                return temp.Replace("{y}", y);
-               
+            return temp.Replace("{y}", y);
         }
     }
 }

@@ -13,11 +13,17 @@ namespace NotificationSystem.Controllers
     [ApiController]
     public class NotificationController : ControllerBase
     {
+
         private INotificationRepository _NotificationRepository;
         public NotificationController(AppDbContext context)
         {
            _NotificationRepository =new  DatabaseNotification (context);
             
+        }
+        public void Dequeuing()
+        {
+            _NotificationRepository.DequeuingEmailQueue();
+            _NotificationRepository.DequeuingSMSQueue();
         }
         // GET: api/<ValuesController>
         [HttpGet]

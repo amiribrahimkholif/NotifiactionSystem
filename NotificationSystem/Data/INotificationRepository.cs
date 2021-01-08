@@ -14,6 +14,9 @@ namespace NotificationSystem.Data
         public bool AddNotification([FromBody] Notification notification);
         public bool UpdateNotificationByID(int id, [FromBody] Notification no);
         public bool DeleteNotificatonByID(int id);
+        public void DequeuingEmailQueue();
+        public void DequeuingSMSQueue();
+
 
     }
 }

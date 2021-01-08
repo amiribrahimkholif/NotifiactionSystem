@@ -16,7 +16,27 @@ namespace NotificationSystem.Data
         {
             _context = context;
         }
-
+        
+        public void DequeuingEmailQueue()
+        {
+            List<EmailQueue> listEmail = _context.EmailQueue.ToList();
+            for(int i=0;i<listEmail.Count;i++)
+            {
+                if (listEmail[i].isSent == true)
+                    Console.WriteLine(listEmail[i].NotificationContent+"    "+listEmail[i].EmailAddress);
+            }
+            Console.WriteLine("\n");
+        }
+        public void DequeuingSMSQueue()
+        {
+            List<SMSQueue> listSMS = _context.SmsQueue.ToList();
+            for (int i = 0; i < listSMS.Count; i++)
+            {
+                if (listSMS[i].isSent == true)
+                    Console.WriteLine(listSMS[i].NotificationContent + "    " + listSMS[i].PhoneNumber);
+            }
+            Console.WriteLine("\n");
+        }
         public bool AddNotification([FromBody] Notification notification)
         {
             if (notification == null)

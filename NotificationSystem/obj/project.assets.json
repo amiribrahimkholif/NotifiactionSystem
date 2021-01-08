@@ -5800,11 +5800,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Projects\\Dot Net\\NotificationSystem\\NotificationSystem\\NotificationSystem.csproj",
+      "projectUniqueName": "E:\\Projects\\Dot Net\\GitHub\\NotifiactionSystem\\NotifiactionSystem\\NotificationSystem\\NotificationSystem.csproj",
       "projectName": "NotificationSystem",
-      "projectPath": "E:\\Projects\\Dot Net\\NotificationSystem\\NotificationSystem\\NotificationSystem.csproj",
+      "projectPath": "E:\\Projects\\Dot Net\\GitHub\\NotifiactionSystem\\NotifiactionSystem\\NotificationSystem\\NotificationSystem.csproj",
       "packagesPath": "C:\\Users\\amiri\\.nuget\\packages\\",
-      "outputPath": "E:\\Projects\\Dot Net\\NotificationSystem\\NotificationSystem\\obj\\",
+      "outputPath": "E:\\Projects\\Dot Net\\GitHub\\NotifiactionSystem\\NotifiactionSystem\\NotificationSystem\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\amiri\\AppData\\Roaming\\NuGet\\NuGet.Config",

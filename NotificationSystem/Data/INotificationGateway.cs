@@ -7,6 +7,6 @@ namespace NotificationSystem.Data
 {
     interface INotificationGateway
     {
-        public void SendNotification(int NotificationID);
+        public bool Send(int NotificationID);
     }
 }
